@@ -28,6 +28,7 @@
   "homepage": "https://github.com/kaytcat/slack-lunchbot#readme",
   "dependencies": {
     "crawler": "^1.0.3",
-    "datejs": "^1.0.0-rc3"
+    "datejs": "^1.0.0-rc3",
+    "download-pdf": "^0.1.6"
   }
 }
