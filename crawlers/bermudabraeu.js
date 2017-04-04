@@ -4,7 +4,7 @@ var url = require('url');
 var c = new Crawler();
 
 module.exports = {
-    getMenu: function (test) {
+    getMenu: function (postMessage) {
         c.queue([{
             uri: 'http://www.bermuda-braeu.at/en/',
             jQuery: true,
@@ -38,7 +38,7 @@ module.exports = {
                     var menutext = $("div[class='col-md-4 menu-text']").text();
                     var todaysMenu = menutext.substring(menutext.lastIndexOf(today), menutext.lastIndexOf(end));
 
-                    test(todaysMenu);
+                    postMessage(todaysMenu);
                 }
 
                 done();
