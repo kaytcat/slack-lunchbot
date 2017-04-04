@@ -29,6 +29,7 @@
   "dependencies": {
     "crawler": "^1.0.3",
     "datejs": "^1.0.0-rc3",
-    "download-pdf": "^0.1.6"
+    "download-pdf": "^0.1.6",
+    "slackbots": "1.0.2"
   }
 }
