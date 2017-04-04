@@ -4,7 +4,6 @@
   "description": "Lunchbot for slack",
   "main": "lib/lunchbot.js",
   "scripts": {
-    "start": "node lib/lunchbot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -30,6 +29,6 @@
     "crawler": "^1.0.3",
     "datejs": "^1.0.0-rc3",
     "download-pdf": "^0.1.6",
-    "slackbots": "1.0.2"
+    "slackbots": "1.0."
   }
 }
