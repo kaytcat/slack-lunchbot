@@ -1,0 +1,25 @@
+{
+  "name": "slack-lunchbot",
+  "version": "1.0.0",
+  "description": "Lunchbot for slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaytcat/slack-lunchbot.git"
+  },
+  "keywords": [
+    "lunchbot",
+    "slack",
+    "lunch",
+    "bot"
+  ],
+  "author": "kununu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaytcat/slack-lunchbot/issues"
+  },
+  "homepage": "https://github.com/kaytcat/slack-lunchbot#readme"
+}
