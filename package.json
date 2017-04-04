@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/kaytcat/slack-lunchbot/issues"
   },
-  "homepage": "https://github.com/kaytcat/slack-lunchbot#readme"
+  "homepage": "https://github.com/kaytcat/slack-lunchbot#readme",
+  "dependencies": {
+    "crawler": "^1.0.3",
+    "datejs": "^1.0.0-rc3"
+  }
 }
