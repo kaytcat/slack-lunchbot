@@ -30,6 +30,7 @@
     "crawler": "^1.0.3",
     "date-fns": "^1.28.2",
     "download-pdf": "^0.1.6",
+    "pdf2json": "^1.1.7",
     "slackbots": "1.0.2"
   }
 }

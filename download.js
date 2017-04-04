@@ -1,5 +1,5 @@
 module.exports = {
-  downloadPDF: function(link) {
+  downloadPDF: function(link, callback, callback2) {
 
     var download = require('download-pdf')
 
@@ -15,9 +15,6 @@ module.exports = {
 
     download(pdf, options, function(err){
         if (err) throw err
-        console.log("File downloaded");
-    })
-
-    return options;
-  }
+        callback(options.directory+'/'+options.filename, callback2);
+    })}
 };
