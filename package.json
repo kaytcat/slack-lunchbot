@@ -2,9 +2,16 @@
   "name": "slack-lunchbot",
   "version": "1.0.0",
   "description": "Lunchbot for slack",
-  "main": "index.js",
+  "main": "lib/lunchbot.js",
+  "bin": {
+    "norrisbot": "bin/bot.js"
+  },
   "scripts": {
+    "start": "node bin/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "repository": {
     "type": "git",
