@@ -5,7 +5,6 @@ let download = require('download-file');
 
 function getMenu(callback) {
 
-    //todo: build url, or grep from page
     let url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
     let options = {
         directory: "./tmp/",
@@ -29,4 +28,6 @@ function getMenu(callback) {
     });
 }
 
-module.exports = getMenu;
+module.exports = {
+    getMenu: getMenu
+};
