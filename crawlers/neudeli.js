@@ -3,8 +3,7 @@ let addDays = require('date-fns/add_days');
 let pdf2text = require('../lib/pdf-parser.js');
 let download = require('download-file');
 
-function getMenu(callback) {
-
+function getMenu (callback) {
     let url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
     let options = {
         directory: "./tmp/",
@@ -15,7 +14,6 @@ function getMenu(callback) {
         if (err) throw err;
 
         pdf2text.pdf2txt(options.directory + options.filename, function (text) {
-
             let today = new Date();
             let todayString = format(today,'DD.MM');
             let tomorrowString = format(addDays(today,1),'DD.MM');
