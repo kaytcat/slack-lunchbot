@@ -1,11 +1,11 @@
-let format = require('date-fns/format');
-let addDays = require('date-fns/add_days');
-let pdf2text = require('../lib/pdf-parser.js');
-let download = require('download-file');
+const format = require('date-fns/format');
+const addDays = require('date-fns/add_days');
+const pdf2text = require('../lib/pdf-parser.js');
+const download = require('download-file');
 
 function getMenu (callback) {
-    let url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
-    let options = {
+    const url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
+    const options = {
         directory: "./tmp/",
         filename: "neudeli.pdf"
     };
