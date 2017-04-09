@@ -13,25 +13,22 @@ function downloadFile (url, options) {
 	})
 }
 
-module.exports.getMenu = function getMenu () {
+module.exports.getMenu = async function getMenu () {
   const url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
   const options = {
       directory: "./tmp/",
       filename: "neudeli.pdf"
   };
 
-  return new Promise((resolve, reject) => {
-  	downloadFile(url, options)
-  		.then(() =>
-  			pdf2text.pdf2txt(options.directory + options.filename))
-  		.then(text => {
-  			const today = new Date();
-  			const todayString = format(today,'DD.MM');
-  			const tomorrowString = format(addDays(today,1),'DD.MM');
-  			const todaysMenu = text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
-  			resolve(todaysMenu);
-  		}).catch(err => {
-  			reject(err);
-  		})
-	});
+  try {
+		const fileDownloaded = await downloadFile(url, options);
+		const text = await pdf2text.pdf2txt(options.directory + options.filename);
+		const today = new Date();
+		const todayString = format(today,'DD.MM');
+		const tomorrowString = format(addDays(today,1),'DD.MM');
+		const todaysMenu = text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
+		return todaysMenu;
+	} catch (err) {
+		throw err;
+	}
 }
