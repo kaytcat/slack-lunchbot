@@ -3,8 +3,8 @@ var url = require('url');
 
 var c = new Crawler();
 
-module.exports = {
-    getMenu: function (postMessage) {
+module.exports.getMenu = function getMenu () {
+    return new Promise((resolve, reject) => {
         c.queue([{
             uri: 'http://www.bermuda-braeu.at/en/',
             jQuery: true,
@@ -13,7 +13,7 @@ module.exports = {
             callback: function (error, res, done) {
 
                 if (error) {
-                    console.log(error);
+                    reject(error);
                 } else {
 
                     var d = new Date();
@@ -38,11 +38,11 @@ module.exports = {
                     var menutext = $("div[class='col-md-4 menu-text']").text();
                     var todaysMenu = menutext.substring(menutext.lastIndexOf(today), menutext.lastIndexOf(end));
 
-                    postMessage(todaysMenu);
+                    resolve(todaysMenu);
                 }
 
                 done();
             }
         }])
-    }
+    });
 }
