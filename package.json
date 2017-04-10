@@ -5,7 +5,7 @@
   "main": "lib/lunchbot.js",
   "scripts": {
     "start": "node lib/lunchbot.js",
-    "test": "mocha test/*.js"
+    "test": "mocha test/*.js --timeout 5000"
   },
   "engines": {
     "node": "7.x"
