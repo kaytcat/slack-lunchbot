@@ -43,4 +43,4 @@ module.exports.getMenu = function getMenu() {
       }
     }])
   });
-}
+};
