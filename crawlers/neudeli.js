@@ -1,5 +1,6 @@
 const format = require('date-fns/format');
 const addDays = require('date-fns/add_days');
+const isFriday = require('date-fns/is_friday');
 const getISOWeek = require('date-fns/get_iso_week')
 const pdf2text = require('../lib/pdf-parser.js');
 const download = require('download-file');
@@ -31,10 +32,15 @@ module.exports.getMenu = async function getMenu() {
     let text = await pdf2text.pdf2txt(options.directory + options.filename);
 
     const todayString = format(today, 'DD.MM');
-    const tomorrowString = format(addDays(today, 1), 'DD.MM');
+    let tomorrowString = format(addDays(today, 1), 'DD.MM');
+    let friday = isFriday(today);
+    if (friday) {
+      tomorrowString = 'FRISCHE PASTA handgemacht '
+    }
+
 
     text = text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
-    text += url;
+    text = text + '\n' + url;
     return text;
   } catch (err) {
     throw err;
