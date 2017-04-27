@@ -1,7 +1,9 @@
 const format = require('date-fns/format');
 const addDays = require('date-fns/add_days');
+const getISOWeek = require('date-fns/get_iso_week')
 const pdf2text = require('../lib/pdf-parser.js');
 const download = require('download-file');
+
 
 function downloadFile(url, options) {
   return new Promise((resolve, reject) => {
@@ -14,7 +16,11 @@ function downloadFile(url, options) {
 }
 
 module.exports.getMenu = async function getMenu() {
-  const url = 'http://neudeli.at/wp-content/uploads/2016/10/Wochenkarte-kw42.pdf';
+  today = new Date();
+  let week = getISOWeek(today);
+
+  const url = 'http://www.neudeli.at/wp-content/uploads/Wochenkarte-kw'+week+'.pdf';
+
   const options = {
     directory: "./tmp/",
     filename: "neudeli.pdf"
@@ -22,11 +28,14 @@ module.exports.getMenu = async function getMenu() {
 
   try {
     await downloadFile(url, options);
-    const text = await pdf2text.pdf2txt(options.directory + options.filename);
-    const today = new Date();
+    let text = await pdf2text.pdf2txt(options.directory + options.filename);
+
     const todayString = format(today, 'DD.MM');
     const tomorrowString = format(addDays(today, 1), 'DD.MM');
-    return text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
+
+    text = text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
+    text += url;
+    return text;
   } catch (err) {
     throw err;
   }
