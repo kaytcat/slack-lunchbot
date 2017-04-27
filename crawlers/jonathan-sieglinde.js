@@ -5,8 +5,9 @@ const c = new Crawler();
 
 module.exports.getMenu = function getMenu() {
   return new Promise((resolve, reject) => {
+    let menuLink = 'http://jonathan-sieglinde.com/mittags-speiseplan.htm';
     c.queue([{
-      uri: 'http://jonathan-sieglinde.com/mittags-speiseplan.htm',
+      uri: menuLink,
       jQuery: true,
 
       // The global callback won't be called
@@ -53,6 +54,8 @@ module.exports.getMenu = function getMenu() {
             thisWeeksMenu.lastIndexOf(todayString),
             thisWeeksMenu.lastIndexOf(endString)
           );
+
+          todaysMenu += '\n' + menuLink;
 
           resolve(todaysMenu);
         }

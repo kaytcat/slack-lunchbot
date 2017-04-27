@@ -4,8 +4,9 @@ const c = new Crawler();
 
 module.exports.getMenu = function getMenu() {
   return new Promise((resolve, reject) => {
+    const menuLink = 'http://www.bermuda-braeu.at/en/';
     c.queue([{
-      uri: 'http://www.bermuda-braeu.at/en/',
+      uri: menuLink,
       jQuery: true,
 
       // The global callback won't be called
@@ -35,6 +36,8 @@ module.exports.getMenu = function getMenu() {
           //a lean implementation of core jQuery designed specifically for the server
           let menutext = $("div[class='col-md-4 menu-text']").text();
           let todaysMenu = menutext.substring(menutext.lastIndexOf(today), menutext.lastIndexOf(end));
+
+          todaysMenu += '\n' + menuLink;
 
           resolve(todaysMenu);
         }
