@@ -1,6 +1,3 @@
-const format = require('date-fns/format');
-const addDays = require('date-fns/add_days');
-const isFriday = require('date-fns/is_friday');
 const pdf2text = require('../lib/pdf-parser.js');
 const download = require('download-file');
 
@@ -17,8 +14,7 @@ function downloadFile(url, options) {
   })
 }
 
-module.exports.getMenu = async function getMenu() {
-  today = new Date();
+module.exports.getMenu = async function getMenu(date = new Date()) {
 
   const url = 'http://www.denns-biomarkt.at/file/23308_Mittagsmen%C3%BC%20Wien%20Singerstr.pdf';
 
@@ -27,17 +23,16 @@ module.exports.getMenu = async function getMenu() {
     filename: "denns.pdf"
   };
 
+  const todayString = getDayFormatted(date);
+  const tomorrowString = getDayFormatted(DateFns.addDays(date, 1));
+
   try {
     await downloadFile(url, options);
+
     let text = await pdf2text.pdf2txt(options.directory + options.filename);
 
-    const todayString = getDayFormatted(today);
-    let tomorrowString = getDayFormatted(addDays(today, 1));
+    return camelCaseToWords(text.substring(text.indexOf(todayString), text.lastIndexOf(tomorrowString))).concat('\n',url);
 
-    text = text.substring(text.indexOf(todayString), text.lastIndexOf(tomorrowString));
-    text = camelCaseToWords(text);
-    text = text + '\n' + url;
-    return text;
   } catch (err) {
     throw err;
   }
