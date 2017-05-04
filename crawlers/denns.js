@@ -19,7 +19,6 @@ function downloadFile(url, options) {
 
 module.exports.getMenu = async function getMenu() {
   today = new Date();
-  today = addDays(today, 2);
 
   const url = 'http://www.denns-biomarkt.at/file/23308_Mittagsmen%C3%BC%20Wien%20Singerstr.pdf';
 
@@ -34,8 +33,6 @@ module.exports.getMenu = async function getMenu() {
 
     const todayString = getDayFormatted(today);
     let tomorrowString = getDayFormatted(addDays(today, 1));
-
-
 
     text = text.substring(text.indexOf(todayString), text.lastIndexOf(tomorrowString));
     text = camelCaseToWords(text);
