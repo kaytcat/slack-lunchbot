@@ -31,7 +31,10 @@ module.exports.getMenu = async function getMenu(date = new Date()) {
 
     let text = await pdf2text.pdf2txt(options.directory + options.filename);
 
-    return camelCaseToWords(text.substring(text.indexOf(todayString), text.lastIndexOf(tomorrowString))).concat('\n',url);
+    text = camelCaseToWords(text);
+    text = text.substring(text.lastIndexOf(todayString), text.lastIndexOf(tomorrowString));
+
+    return text.concat('\n',url);
 
   } catch (err) {
     throw err;
@@ -44,11 +47,11 @@ function camelCaseToWords(str){
 
 
 function getDayFormatted(date) {
-  if (DateFns.isMonday(date)) return "Mo";
-  if (DateFns.isTuesday(date)) return "Di";
-  if (DateFns.isWednesday(date)) return "Mi";
-  if (DateFns.isThursday(date)) return "Do";
-  if (DateFns.isFriday(date)) return "Fr";
-  if (DateFns.isSaturday(date)) return "Sa";
+  if (DateFns.isMonday(date)) return "Mo ";
+  if (DateFns.isTuesday(date)) return "Di ";
+  if (DateFns.isWednesday(date)) return "Mi ";
+  if (DateFns.isThursday(date)) return "Do ";
+  if (DateFns.isFriday(date)) return "Fr ";
+  if (DateFns.isSaturday(date)) return "Sa ";
   if (DateFns.isSunday(date)) return "GutenAppetitwünschtIhnenIhrdenn";
 }
