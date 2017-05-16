@@ -3,7 +3,7 @@ const should = require('should');
 
 describe('#getListOfRestaurants()', function () {
   it('respond with list of restaurants', function () {
-    restaurants.getListOfRestaurants().should.equal('\n- Bermuda Bräu\n- Jonathan Sieglinde\n- Ramien\n- Neudeli\n');
+    restaurants.getListOfRestaurants().should.equal('\n- Bermuda Bräu\n- Jonathan Sieglinde\n- Ramien\n- Neudeli\n- Denns\n');
   });
 });
 
