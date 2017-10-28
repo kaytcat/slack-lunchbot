@@ -31,7 +31,8 @@
     "date-fns": "^1.28.2",
     "download-file": "^0.1.5",
     "pdf2json": "^1.1.7",
-    "slackbots": "1.0.2"
+    "slackbots": "1.0.2",
+    "html-to-text": "3.3.0"
   },
   "devDependencies": {
     "mocha": "^3.2.0",
