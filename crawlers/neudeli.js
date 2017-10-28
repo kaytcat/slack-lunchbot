@@ -1,7 +1,8 @@
 const format = require('date-fns/format');
 const addDays = require('date-fns/add_days');
 const isFriday = require('date-fns/is_friday');
-const getISOWeek = require('date-fns/get_iso_week')
+const getISOWeek = require('date-fns/get_iso_week');
+
 const pdf2text = require('../lib/pdf-parser.js');
 const download = require('download-file');
 
